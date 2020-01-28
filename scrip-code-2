@@ -1,0 +1,539 @@
+# The script of the game goes in this file.
+
+# Declare characters used by this game. The color argument colorizes the
+# name of the character.
+
+define us = Character(" ")
+define e = Character("[name]")
+define coffee = Character("Barista")
+define secret = Character("???")
+define wise2 = Character("Eilyan")
+define mon1 = Character("Abysswing")
+
+# The game starts here.
+
+label start:
+
+    # Show a background. This uses a placeholder by default, but you can
+    # add a file (named either "bg room.png" or "bg room.jpg") to the
+    # images directory to show it.
+
+    scene bg room
+
+    # This shows a character sprite. A placeholder is used, but you can
+    # replace it by adding a file named "eileen happy.png" to the images
+    # directory.
+
+    define n = Character("[name]")
+
+    python:
+        name = renpy.input("What is your name?")
+        name = name.strip()
+
+        if not name:
+            name = "Y/N"
+
+    us "Your name is [name]?"
+
+    menu:
+        "Yes":
+            jump con
+
+        "No":
+            jump again
+
+    label again:
+        "Well we are going to continue and call you whatever you wrote, we simply don't have the time for your shenanigans"
+
+        jump reg
+
+    label con:
+        "Good, we can continue"
+
+        jump reg
+
+    label reg:
+
+        "This game is about imagining the story that we put you through in a way that is unique to only you"
+
+        "So please sit back, relax, and let your mind drift to the parts of it that you didn't think possible."
+
+        "Of course, remember, have fun"
+
+    #show eileen happy
+
+    # These display lines of dialogue.
+
+    #Input a coffeeshop image here, maybe a sound if you're feeling it"
+    us "You are outside of your apartment for some reason, leaving the small place was not the smartest of ideas, but here you are"
+
+    us "You walk into a coffeeshop that has a sailors name for some reason to pick up your overpriced coffee"
+
+    e "*This day can't get any worse*"
+
+    coffee "Order for...[name]!?"
+
+    e "Oh, uh that's me, thanks."
+
+    e "*Well, atleast I have my drink*"
+
+    e "ERRGUHH"
+
+    e "Of course they got it wrong"
+
+    e "*this has been the worst day of my entire life*"
+
+    us "You walk to the nearest garbage can to throw out your coffee which suspiciously tasted like green tea, when you hear a distant voice"
+
+    secret "I seem to understand that you are not having a good day"
+
+    e "Huh? What?"
+
+    e "Who said that!?!?"
+
+    us "A little startled, you turn towards where the voice came from"
+
+    us "To your surprise, you see a short man with a long white beard and grey robes on looking up at you"
+
+    show wizard at Position(xpos = 0.5, xanchor=0.5, ypos=0.5, yanchor=0.5)
+
+    e "OH?!"
+
+    e "Uh? Hi? Erm? Who are you?"
+
+    wise2 "I'm Eilyan the wizard and you, [name], are the chosen one"
+
+    e "Huh, this can't be happening, this day has been insane."
+
+    wise2 "We're going now"
+
+    hide wizard
+
+    #sparke effect
+
+    us "Everything goes white for a milisecond, then your scenery changes to a forest."
+
+    e "WOAH!?!?"
+
+    e "Okay a little warning nex- hey where are you going?!"
+
+    show wizard at Position(xpos = 0.5, xanchor=0.5, ypos=0.5, yanchor=0.5)
+
+    us "Eilyan started walking towards a table with four glass tubes."
+
+    wise2 "You need to pick your class."
+
+    e "No, I'm not doing anything, I don't know where we are. Take me back home now!"
+
+    wise2 "We don't have time for your nonsense, pick one or the world as you know it will cease."
+
+    e "How do I know I can even believe you?"
+
+    wise2 "If you don't you can leave anytime you want, but then you must understand that when the world ends, that is on you and you alone."
+
+    e "..."
+
+    e "Okay, fine, what are my options?"
+
+    wise2 "You can choose one of the following items, a Hat, Pen, Twig, and a Sweater"
+
+    e "Okay, so it might just be me, but these all seem useless"
+
+    wise2 "..."
+
+    us "Eilyan doesn't respond, he just stares at you"
+
+    wise2 "..."
+
+    e "Alright then, uhhh I choose the..."
+
+    hide wizard
+
+    menu:
+        "Hat":
+            $ classopt = "hat"
+            jump hat
+
+        "Pen":
+            $ classopt = "pen"
+            jump pen
+
+        "Twig":
+            $ classopt = "twig"
+            jump twig
+
+        "Sweater":
+            $ classopt = "sweater"
+            jump sweater
+
+    label hat:
+        "You grab the green hat and put it on, and out of no where a sword an sheild appear on your body"
+
+        jump h
+
+    label pen:
+        "You grab the weirdly futuristic pen with a button on the side"
+
+        jump p
+
+    label twig:
+        "You grab the mishapen, yet oddly weighty twig"
+
+        jump t
+
+    label sweater:
+        "You grab the sweater that has an English train station on the front"
+
+        jump s
+
+    label h:
+        #screen shake
+        e "WOAH"
+
+        e "That was unexpected, uhhhh..."
+
+        e "Are the sword and sheild really necessary for the \"great mission\" I've been chosen for?"
+
+        wise2 "Yes, we must go, NOW!"
+
+        hide wizard
+
+        jump ww
+
+    label p:
+        "Curiousity gets the best of you and you press the red button"
+
+        #laser sound, screen shake
+
+        "A yellow laser comes out the top and you leap back statled"
+
+        e "OH SHOOT!"
+
+        e "WOAH! Do I get the powers to lift things aswell?"
+
+        wise2 "..."
+
+        wise2 "We don't have time for this, we need to go now!"
+
+        hide wizard
+
+        jump ww
+
+    label t:
+        "You turn the twig in your hands, a bit confused as to what you are supposed to do with it?"
+
+        wise2 "You chose what I chose when I was about your age"
+
+        e "Oh? Well forgive me but I am a bit confused as to what I am supposed to do with it"
+
+        wise2 "No time for that, we must go NOW!"
+
+        hide wizard
+
+        jump ww
+
+    label s:
+        "You slip on the purple sweater and suddenly, you have a painful headache"
+
+        e "OWW, gosh is my head supposed to hurt this much"
+
+        wise2 "It's just increasing your knowledge, suck it up"
+
+        wise2 "No time to explain, we have to go NOW!"
+
+        hide wizard
+
+        jump ww
+
+    #hat
+    label ww:
+
+        us "Everything goes white again, and you are back in your city, this time in an alley."
+
+        show wizard at Position(xpos = 0.5, xanchor=0.5, ypos=0.5, yanchor=0.5)
+
+        e "Wait, okay so what am I supposed to do?"
+
+        wise2 "Just follow the trail of things that don't seem normal and it'll take you to your first trial."
+
+        hide wizard
+
+        us "With that Eilyan disappeared, leaving you to your own devices."
+
+        e "Well that was descriptive."
+
+        us "You walk out the alley and immeadiately realize everything was off."
+
+        e "This is definetily not right."
+
+        e "There are straight up snakes slitering down the sidewalk how is no one else noticing this?"
+
+        us "You walk up to a person on the street and wave your hand infront of them."
+
+        us "Nothing happened, they just walked through it."
+
+        e "So I'm home, but not home, alright cool cool cool."
+
+        e "Maybe...I'm supposed to go back home?"
+
+        e "Yeah well that just sounds like a good idea"
+
+        us "You look around and see that there are monsters around you all heading somewhere."
+
+        e "*ohhhhhh crap...*"
+
+        e "*...I have to remain hidden"
+
+        us "You make your way back to your apartment building trying to stay as hidden as possible."
+
+        e "*There are more monsters here than there were back where Eilyan left me.*"
+
+        e "Well...here goes nothing."
+
+        us "You walked into the building to find that it is crawling with monsters, creatures, and unsuspecting humans alike."
+
+        e "This is crazy, like absolutely crazy."
+
+        secret "So you're [name]? I would've thought you were taller."
+
+        us "You turn quickly to see a short humanoid monster."
+
+        e "Who are you and why do you know who I am?"
+
+        mon1 "Haha, my name is Abysswing, and I'm surprised that everyone here doesn't know you, you are [name] the chosen one."
+
+        e "What was it that I'm chosen for exactly?"
+
+        mon1 "Do you not know? Well you are the one who is \"supposedly\" going to overthrow out king, and prevent us from infiltrating the human world."
+
+        e "*why on Earth would you tell me what your plan is, all you did is tell me what I need to do. How dumb are you?*"
+
+        e "Sooooo... about that... you mind taking me to him?"
+
+        mon1 "Sure, but you must go through me first \"chosen one\""
+
+        us "Abysswing lifts various objects from around him and smirks devilously"
+
+        mon1 "This will be your end [name]"
+
+        e "oh crap crap crap crap"
+
+        us "You freak out tring to think of what to do."
+
+        us "You remember what Eilyan had given you to protect yourself."
+
+        if classopt == "hat":
+            us "You take out your sword and sheild"
+
+            mon1 "You think that will stop me? You clearly underestimate me."
+
+            us "Abysswing, is about to throw the various objects he is levitating around him at you."
+
+            us "You can either..."
+
+            menu:
+                "Protect yourself":
+                    jump protect1
+
+                "Attack MONSTER":
+                    jump attack1
+
+        if classopt == "pen":
+            us "You take out your light sword"
+
+            mon1 "You think that will stop me? You clearly underestimate me."
+
+            us "Abysswing, is about to throw the various objects he is levitating around him at you."
+
+            us "You can either..."
+
+            menu:
+                "Protect yourself":
+                    jump protect2
+
+                "Attack MONSTER":
+                    jump attack2
+
+        elif classopt == "twig":
+            us "You take out your wand"
+
+            mon1 "You think that will stop me? You clearly underestimate me."
+
+            us "Abysswing, is about to throw the various objects he is levitating around him at you."
+
+            us "You can either..."
+
+            menu:
+                "Protect yourself":
+                    jump protect1
+
+                "Attack Abysswing":
+                    jump attack1
+
+        if classopt == "sweater":
+            us "Your eyes glow purple and your hair stars to rise as you levitate of the ground preparing yourself for the attack"
+
+            mon1 "Haha, do you know how to even use your power?"
+
+            e "Well there is a first for everything."
+
+            us "Abysswing, is about to throw the various objects he is levitating around him at you."
+
+            us "You can either..."
+
+            menu:
+                "Protect yourself":
+                    jump protect1
+
+                "Attack Abysswing":
+                    jump attack1
+
+    label protect1:
+        us "You put your sheild infront of your body to protect yourself."
+
+    label attack1:
+        us "You run at Abysswing with your sword in hand, effortlessly dodging the various objects that are hurdling at you."
+
+        us "You manage to reach him and hold your sword at his neck."
+
+        e "Surrender now, don't make me kill someone."
+
+        mon1 "Hmm, you may have bested me, but you have no idea what is coming."
+
+        us "Abysswing dissolves and a blue light evaporated upward."
+
+        e "That was... weird, to say the least."
+
+        jump continue2
+
+    label protect2:
+        us "You stand guard, and use your light saber and easily cut through the various objects that were hurdling at you."
+
+    label attack2:
+        us "You run at Abysswing with your saber in hand, effortlessly dodging the various objects that are hurdling at you."
+
+        us "You manage to reach him and you hold your saber at his neck."
+
+        e "Surrender now, don't make me kill someone."
+
+        mon1 "Hmm, you may have bested me, but you have no idea what is coming."
+
+        us "Abysswing dissolves and a blue light evaporated upward."
+
+        e "That was... weird, to say the least."
+
+        jump continue2
+
+    label protect3:
+        us "You stand guard with your wand in hand, objects hurdling at you."
+
+        us "You close your eyes having absolutely no idea of how to use the thing."
+
+        #sound
+
+        us "You open your eyes and all the objects have turned into paper birds."
+
+        e "What the?"
+
+        mon1 "Well, I do have to say that was impressive."
+
+    label attack3:
+        us "You run at MONSTER with your wand in your hand, dodging the objects hurding at you."
+
+        us "You manage to reach him and hold you wand at his neck."
+
+        e "Surrender now, don't make me kill someone."
+
+        mon1 "Hmm, you may have bested me, but you have no idea what is coming."
+
+        us "Abysswing dissolves and a blue light evaporated upward."
+
+        e "That was... weird, to say the least."
+
+        jump continue2
+
+    label protect4:
+        us "You watch as the objects hurdling came closer with every milisecond passing."
+
+        us "At the last second you create create a sheild around yourself and all the objects fall to the ground."
+
+        e "Well that was unexpected."
+
+        mon1 "You are stronger than I thought you, maybe it was me underestimating you."
+
+    label attack4:
+        us "You float higher and in a split second a ball that resembles a purple electro ball from a game you used to play came flying from your hands."
+
+        us "It hits Abysswing and he stumbles back"
+
+        mon1 "Ow, how did you?..."
+
+        mon1 "You're one of \"them\""
+
+        us "You prepared for another attack from MONSTER, but he evaporated before you or him could attack again."
+
+        us "You lowered and went back to normal, standing on the ground like nothing happened."
+
+        e "That was... weird, to say the least."
+
+        jump continue2
+
+    label continue2:
+
+        "You catch your breath after the battle."
+
+        e "*That wasn't much of a fight, Abysswing kinda just let me best him."
+
+        e "*Well no matter, I have to get to this \"King\" or something."
+
+        e "But first, home."
+
+        us "You walk to the elevator that you normally take to your apartment."
+
+        us "The moment it opens 6 creatures came bursting out of it, completely ignoring you, excpet for one who remained in the elevator."
+
+        secret "Well, well, well, isn't it [name]."
+
+        "The masked monster said to you as you walked into the elevator."
+
+        #finish this later
+
+
+
+
+
+    # This ends the game.
+
+    e  "Sure, but arent you bored?"
+
+    menu:
+
+        "Yes":
+            jump game
+
+        "No":
+            jump book
+
+    label game:
+
+        "Good then you are doing something right in your life"
+
+        jump en
+
+    label book:
+
+        "Why not? This class is boring."
+
+        jump marry
+
+    label marry:
+
+        "I mean yeah you aren't wrong."
+
+        jump en
+
+    label en:
+
+        "See ya later"
+
+    return
